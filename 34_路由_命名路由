@@ -1,0 +1,28 @@
+4.6. 【命名路由】
+
+作用：可以简化路由跳转及传参（后面就讲）。
+
+给路由规则命名：
+routes:[
+  {
+    name:'zhuye',
+    path:'/home',
+    component:Home
+  },
+  {
+    name:'xinwen',
+    path:'/news',
+    component:News,
+  },
+  {
+    name:'guanyu',
+    path:'/about',
+    component:About
+  }
+]
+跳转路由：
+<!--简化前：需要写完整的路径（to的字符串写法） -->
+<router-link to="/news/detail">跳转</router-link>
+
+<!--简化后：直接通过名字跳转（to的对象写法配合name属性） -->
+<router-link :to="{name:'guanyu'}">跳转</router-link>

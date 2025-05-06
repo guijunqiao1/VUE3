@@ -1,0 +1,10 @@
+Vue2的生命周期
+
+创建阶段(创建前、创建后)：beforeCreate、created
+//在创建阶段需要注意的是，先前我们的脚手架是基于vue3的vite实现的，此处需要使用vue-cil进行实现
+
+挂载阶段(挂载前、挂载后)：beforeMount、mounted
+
+更新阶段(更新前、更新后)：beforeUpdate、updated
+
+销毁阶段(销毁前、销毁后)：beforeDestroy、destroyed

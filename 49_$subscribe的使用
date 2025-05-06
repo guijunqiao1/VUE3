@@ -1,0 +1,7 @@
+5.7.【$subscribe】
+
+通过 store 的 $subscribe() 方法侦听 state 及其变化
+talkStore.$subscribe((mutate,state)=>{
+  console.log('LoveTalk',mutate,state)
+  localStorage.setItem('talk',JSON.stringify(talkList.value))
+})

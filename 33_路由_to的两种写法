@@ -1,0 +1,7 @@
+4.5. 【to的两种写法】
+
+<!-- 第一种：to的字符串写法 -->
+<router-link active-class="active" to="/home">主页</router-link>
+
+<!-- 第二种：to的对象写法 -->
+<router-link active-class="active" :to="{path:'/home'}">Home</router-link>

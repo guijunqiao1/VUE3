@@ -1,0 +1,21 @@
+5.5.【storeToRefs】
+
+- 借助storeToRefs将store中的数据转为ref对象，方便在模板中使用。
+- 注意：pinia提供的storeToRefs只会将数据做转换，而Vue的toRefs会转换store中数据。
+
+<template>
+	<div class="count">
+		<h2>当前求和为：{{sum}}</h2>
+	</div>
+</template>
+
+<script setup lang="ts" name="Count">
+  import { useCountStore } from '@/store/count'
+  /* 引入storeToRefs */
+  import { storeToRefs } from 'pinia'
+
+	/* 得到countStore */
+  const countStore = useCountStore()
+  /* 使用storeToRefs转换countStore，随后解构 */
+  const {sum} = storeToRefs(countStore)
+</script>

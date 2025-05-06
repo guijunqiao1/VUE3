@@ -1,0 +1,31 @@
+3. 作用域插槽 
+
+1. 理解：数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。（新闻数据在News组件中，但使用数据所遍历出来的结构由App组件决定）
+2. 具体编码：
+
+父组件中：
+      <Game v-slot="params">
+      <!-- <Game v-slot:default="params"> -->
+      <!-- <Game #default="params"> -->
+        <ul>
+          <li v-for="g in params.games" :key="g.id">{{ g.name }}</li>
+        </ul>
+      </Game>
+
+子组件中：
+      <template>
+        <div class="category">
+          <h2>今日游戏榜单</h2>
+          <slot :games="games" a="哈哈"></slot>
+        </div>
+      </template>
+
+      <script setup lang="ts" name="Category">
+        import {reactive} from 'vue'
+        let games = reactive([
+          {id:'asgdytsa01',name:'英雄联盟'},
+          {id:'asgdytsa02',name:'王者荣耀'},
+          {id:'asgdytsa03',name:'红色警戒'},
+          {id:'asgdytsa04',name:'斗罗大陆'}
+        ])
+      </script>

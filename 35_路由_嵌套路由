@@ -1,0 +1,51 @@
+4.7. 【嵌套路由】
+
+1. 编写News的子路由：Detail.vue
+2. 配置路由规则，使用children配置项：
+const router = createRouter({
+  history:createWebHistory(),
+	routes:[
+		{
+			name:'zhuye',
+			path:'/home',
+			component:Home
+		},
+		{
+			name:'xinwen',
+			path:'/news',
+			component:News,
+			children:[
+				{
+					name:'xiang',
+					path:'detail',
+					component:Detail
+				}
+			]
+		},
+		{
+			name:'guanyu',
+			path:'/about',
+			component:About
+		}
+	]
+})
+export default router
+
+3. 跳转路由（记得要加完整路径）：
+<router-link to="/news/detail">xxxx</router-link>
+<!-- 或 -->
+<router-link :to="{path:'/news/detail'}">xxxx</router-link>
+
+4. 记得去Home组件中预留一个<router-view>
+<template>
+  <div class="news">
+    <nav class="news-list">
+      <RouterLink v-for="news in newsList" :key="news.id" :to="{path:'/news/detail'}">
+        {{news.name}}
+      </RouterLink>
+    </nav>
+    <div class="news-detail">
+      <RouterView/>
+    </div>
+  </div>
+</template>

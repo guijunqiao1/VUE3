@@ -1,0 +1,66 @@
+2. 创建Vue3工程
+2.1. 【基于 vue-cli 创建】
+点击查看官方文档(https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)
+备注：目前vue-cli已处于维护模式，官方推荐基于 Vite 创建项目。
+
+## 查看@vue/cli版本，确保@vue/cli版本在4.5.0以上
+vue --version
+## 安装或者升级你的@vue/cli 
+npm install -g @vue/cli
+## 执行创建命令
+vue create vue_test
+##  随后选择3.x
+##  Choose a version of Vue.js that you want to start the project with (Use arrow keys)
+##  > 3.x
+##    2.x
+## 启动
+cd vue_test
+npm run serve
+
+2.2. 【基于 vite 创建】(推荐)
+vite 是新一代前端构建工具，官网地址：https://vitejs.cn，vite的优势如下：
+
+- 轻量快速的热重载（HMR），能实现极速的服务启动。
+- 对 TypeScript、JSX、CSS 等支持开箱即用。
+- 真正的按需编译，不再等待整个应用编译完成。
+- webpack构建 与 vite构建对比图如下：
+具体操作如下（点击查看官方文档(https://cn.vuejs.org/guide/quick-start.html#creating-a-vue-application)）
+
+## 1.创建命令(需要注意的是执行该命令时候的工作目录应该是桌面--使得最终生成的Vue项目文件在桌面上进行直接的显示)
+npm create vue@latest
+## 2.具体配置
+## 配置项目名称（名称中不可包含中文内容）
+√ Project name: vue3_test
+## 是否添加TypeScript支持（Vue3拥抱了TypeScript，对于之前的Vue2是不完全支持TypeScript的）
+√ Add TypeScript?  Yes
+## 是否添加JSX支持
+√ Add JSX Support?  No
+## 是否添加路由环境
+√ Add Vue Router for Single Page Application development?  No
+## 是否添加pinia环境
+√ Add Pinia for state management?  No
+## 是否添加单元测试
+√ Add Vitest for Unit Testing?  No
+## 是否添加端到端测试方案
+√ Add an End-to-End Testing Solution? » No
+## 是否添加ESLint语法检查(防止最基本的js文件中支持的alert()方法以及console.log()可能会被语法检查出来错误)
+√ Add ESLint for code quality?  No
+## 是否添加Prettiert代码格式化
+√ Add Prettier for code formatting?  No
+
+//在创建了对应的Vue3测试项目之后使用Vscode将该项目打开，并且此处对其中的快速创建的内容进行解析：
+--在刚开始打开某几个文件的时候可能内容会出现飘红的现象--原因在于当前所处的文件夹下并没有node_modules文件夹用于存放对应需要的包的内容(依赖)，或者说是缺少了依赖，
+--故首先需要做的操作是在命令行中输入npm i 进行依赖容器(node_modules文件夹以及其中的内容)的下载.
+--之所以npm i 能够将所需依赖进行统一的下载的原因在于npm i 命令本质上是下载当前的package.json文件中保存的包信息进行一致的下载，而使用下方快速构建的命令创建出来的Vue测试项目中单独package.json的包信息内容本质上其实已经被管理者提前设置好使用npm i命令进行一致的下载设置了
+--需要注意的是和npm i 命令等价的yarn命令的形式是:yarn install
+1、首先在.vscode文件夹下的文件的作用是用于提示：当用户点击了其他的文件(该总文件下的其他文件),则会在右下角弹出提示下载插件的语句.(而.vscode文件夹下的文件的内容则是检测的文件的名称)
+2、public文件夹下的.ico文件用于存放显示出项目的页面文件的图标图片的内容。
+3、.gitignore文件用于:.gitignore 文件的主要作用是告诉 Git 哪些文件或目录应该被忽略，不需要被版本控制追踪。它帮助开发者避免将一些不必要的、临时的或敏感的文件（如本地配置文件、编译产物、缓存等）提交到代码仓库中。
+4、tsconfig.json文件夹下的env.d.ts文件用于辅助TypeScript进行.txt、.jpg等文件的识别(如果没有该文件以及内容则导致src中的ts(TypeScript和js对应JavaScript同理)文件在引入上述文件时会报错)，
+对env.d.ts文件的内容进行进一步的解析：其中的 <reference types="vite/client" />中的vite/client对应的文件的内容其实是当前文件辅助src文件夹下的ts文件的一些其他的文件的关键字(以后缀的形式进行格式化的提示)
+5、src文件夹中的内容用于管理自身进行动态设置的项目的内容。
+6、index.html为该项目的入口文件,和Node.js学习过程中的项目(使用express-generator()方法快速搭建的express框架的项目文件)中的app.js等价，执行该文件的方法:命令行中输入npm run+dev。
+7、package.json(和lock):为包(依赖)的声明(信息)文件.
+8、README.md为工程的介绍声明文件.
+9、tsconfig.json文件夹下的tsconfig.app.json、tsconfig.node.json为对TypeScript的配置文件.
+10、vite.config.ts为整个工程的配置文件.(可以安装插件、配置一些代理)

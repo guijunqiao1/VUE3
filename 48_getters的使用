@@ -1,0 +1,31 @@
+5.6.【getters】
+
+1. 概念：当state中的数据，需要经过处理后再使用时，可以使用getters配置。
+2. 追加getters配置。
+// 引入defineStore用于创建store
+import {defineStore} from 'pinia'
+
+// 定义并暴露一个store
+export const useCountStore = defineStore('count',{
+  // 动作
+  actions:{
+    /************/
+  },
+  // 状态
+  state(){
+    return {
+      sum:1,
+      school:'atguigu'
+    }
+  },
+  // 计算
+  getters:{
+    bigSum:(state):number => state.sum *10,
+    upperSchool():string{
+      return this. school.toUpperCase()
+    }
+  }
+})
+3. 组件中读取数据：
+const {increment,decrement} = countStore
+let {sum,school,bigSum,upperSchool} = storeToRefs(countStore)

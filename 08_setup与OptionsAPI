@@ -1,0 +1,5 @@
+setup 与 Options API 的关系--对应备份文件夹中的setup与optionsAPI之间的关系
+
+- Vue2 的配置（data、methos......）中可以访问到 setup中的属性、方法。
+- 但在setup中不能访问到Vue2的配置（data、methos......）。
+- 如果与Vue2冲突，则setup优先

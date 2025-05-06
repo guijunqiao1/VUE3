@@ -1,0 +1,30 @@
+4.8. 【路由传参】
+
+query参数
+
+1. 传递参数
+<!-- 跳转并携带query参数（to的字符串写法） -->
+<router-link to="/news/detail?a=1&b=2&content=欢迎你">
+	跳转
+</router-link>
+				
+<!-- 跳转并携带query参数（to的对象写法） -->
+<RouterLink 
+  :to="{
+    //name:'xiang', //用name也可以跳转
+    path:'/news/detail',
+    query:{
+      id:news.id,
+      title:news.title,
+      content:news.content
+    }
+  }"
+>
+  {{news.title}}
+</RouterLink>
+
+2.接收参数：
+import {useRoute} from 'vue-router'
+const route = useRoute()
+// 打印query参数
+console.log(route.query)

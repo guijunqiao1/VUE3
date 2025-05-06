@@ -1,0 +1,12 @@
+4.11. 【编程式导航】
+
+路由组件的两个重要的属性：$route和$router变成了两个hooks
+import {useRoute,useRouter} from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+console.log(route.query)
+console.log(route.parmas)
+console.log(router.push)
+console.log(router.replace)

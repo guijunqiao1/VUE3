@@ -1,0 +1,80 @@
+6.4.【v-model】
+
+1. 概述：实现 父↔子 之间相互通信。
+2. 前序知识 —— v-model的本质
+
+<!-- 使用v-model指令 -->
+<input type="text" v-model="userName">
+
+<!-- v-model的本质是下面这行代码 -->
+<input 
+  type="text" 
+  :value="userName" 
+  @input="userName =(<HTMLInputElement>$event.target).value">
+
+3. 组件标签上的v-model的本质：:moldeValue ＋ update:modelValue事件。
+
+<!-- 组件标签上使用v-model指令 -->
+<AtguiguInput v-model="userName"/>
+
+<!-- 组件标签上v-model的本质 -->
+<AtguiguInput :modelValue="userName" @update:model-value="userName = $event"/>
+
+AtguiguInput组件中：
+<template>
+  <div class="box">
+    <!--将接收的value值赋给input元素的value属性，目的是：为了呈现数据 -->
+		<!--给input元素绑定原生input事件，触发input事件时，进而触发update:model-value事件-->
+    <input 
+       type="text" 
+       :value="modelValue" 
+       @input="emit('update:model-value',$event.target.value)"
+    >
+  </div>
+</template>
+
+<script setup lang="ts" name="AtguiguInput">
+  // 接收props
+  defineProps(['modelValue'])
+  // 声明事件
+  const emit = defineEmits(['update:model-value'])
+</script>
+
+4. 也可以更换value，例如改成abc
+
+<!-- 也可以更换value，例如改成abc-->
+<AtguiguInput v-model:abc="userName"/>
+
+<!-- 上面代码的本质如下 -->
+<AtguiguInput :abc="userName" @update:abc="userName = $event"/>
+
+AtguiguInput组件中：
+
+<template>
+  <div class="box">
+    <input 
+       type="text" 
+       :value="abc" 
+       @input="emit('update:abc',$event.target.value)"
+    >
+  </div>
+</template>
+
+<script setup lang="ts" name="AtguiguInput">
+  // 接收props
+  defineProps(['abc'])
+  // 声明事件
+  const emit = defineEmits(['update:abc'])
+</script>
+
+5. 如果value可以更换，那么就可以在组件标签上多次使用v-model
+
+<AtguiguInput v-model:abc="userName" v-model:xyz="password"/>
+
+
+
+
+
+
+
+

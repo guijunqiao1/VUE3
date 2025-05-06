@@ -1,0 +1,21 @@
+6.2. 【自定义事件】
+
+1. 概述：自定义事件常用于：子 => 父。
+2. 注意区分好：原生事件、自定义事件。
+
+- 原生事件：
+  - 事件名是特定的（click、mosueenter等等）	
+  - 事件对象$event: 是包含事件相关信息的对象（pageX、pageY、target、keyCode）
+- 自定义事件：
+  - 事件名是任意名称
+  - 事件对象$event: 是调用emit时所提供的数据，可以是任意类型！！！
+
+3. 示例：
+<!--在父组件中，给子组件绑定自定义事件：-->
+<Child @send-toy="toy = $event"/>
+
+<!--注意区分原生事件与自定义事件中的$event-->
+<button @click="toy = $event">测试</button>
+
+//子组件中，触发事件：
+this.$emit('send-toy', 具体数据)
