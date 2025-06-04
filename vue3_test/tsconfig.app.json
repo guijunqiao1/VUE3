@@ -1,0 +1,13 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src_后续使用/**/*", "src_后续使用/**/*.vue", "备份/20_回顾TS中的_接口_泛型_自定义类型/types", "备份/20_回顾TS中的_接口_泛型_自定义类型/Person2.vue", "备份/20_回顾TS中的_接口_泛型_自定义类型/Person2.vue", "备份/19_标签的ref属性/Person1.vue", "备份/19_标签的ref属性/Person1.vue", "备份/21_props的使用/Person3.vue", "备份/21_props的使用/Person3.vue", "备份/21_props的使用/types", "备份/24_vue3的生命周期/Person5.vue", "备份/24_vue3的生命周期/Person5.vue", "备份/25_自定义hook/hooks", "备份/25_自定义hook/Person6.vue", "备份/25_自定义hook/Person6.vue", "备份/27_路由_基本切换效果/main.ts", "备份/27_路由_基本切换效果/main.ts", "备份/27_路由_基本切换效果/router", "备份/27_路由_基本切换效果/pages/About.vueut.vue", "备份/27_路由_基本切换效果/pages/Home.vue", "备份/27_路由_基本切换效果/pages/News.vue"],
+  "exclude": ["src_后续使用/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "paths": {
+      "@/*": ["src_后续使用/*"]
+    }
+  }
+}
